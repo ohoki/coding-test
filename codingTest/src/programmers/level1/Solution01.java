@@ -1,5 +1,9 @@
 package programmers.level1;
 
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+
 /*
 	- 신고 결과 받기 -
 	문제 설명
@@ -33,27 +37,41 @@ package programmers.level1;
 
 public class Solution01 {
 	public static void main(String[] args) {
-//		String[] id_list, String[] report, int k
 		String[] id_list = {"muzi", "frodo", "apeach", "neo"};
 		String[] report = {"muzi frodo","apeach frodo","frodo neo","muzi neo","apeach muzi"};
 		int k = 2;
-
 		
-		//중복값 제거(""로 치환)
-		for(int i=0; i<report.length; i++) {
-			if(report[i].equals("")) continue;
+		Map<String, HashSet<String>> reportedMap = new HashMap<>(); //Map<신고된ID, [신고한ID]>
+		Map<String, Integer> answerMap = new HashMap<>(); //Map<유저ID, 받을 메일 수> 
+		int[] answer = new int[id_list.length];
+		
+		//초기화
+		for(int i=0; i<id_list.length; i++) {
+			reportedMap.put(id_list[i], new HashSet<>());
+			answerMap.put(id_list[i], 0);
+		}
+		
+		//reportedMap 데이터 입력
+		for(String s : report) {
+			String[] reportStr = s.split(" ");
+			String reportingId = reportStr[0];
+			String reportedId = reportStr[1];
 			
-			for(int j=0; j<report.length; j++) {
-				if(report[i].equals(report[j])) {
-					report[j] = "";
+			reportedMap.get(reportedId).add(reportingId);
+		}
+		
+		//answerMap 데이터 입력
+		for(HashSet<String> reportingIds : reportedMap.values()) {
+			if(reportingIds != null && reportingIds.size() >= k) {
+				for(String reportingId : reportingIds) {
+					answerMap.put(reportingId, answerMap.get(reportingId) + 1);
 				}
 			}
- 		}
+		}
 		
-		System.out.println(report.toString());
-		
-        int[] answer = {};
-		/* return answer;
-        return[2,1,1,0]  */
+		//answer 배열 담기
+		for(int i=0; i<id_list.length; i++) {
+			answer[i] = answerMap.get(id_list[i]);
+		}
     }
 }
