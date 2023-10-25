@@ -1,5 +1,7 @@
 package practice.test;
 
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Hashtable;
 
 /*
@@ -20,26 +22,27 @@ import java.util.Hashtable;
 
 public class TwoSum2 {
 	public static void main(String[] args) {
-		int[] nums = {4,1,9,7,5,3,16};
-		//int[] nums = {2,1,5,7};
+		int[] nums1 = {4,1,9,7,5,3,16};
+		int[] nums2 = {2,1,5,7};
 		
-		System.out.println(twoSum(nums, 14));
+		System.out.println(twoSum(nums1, 14));
+		System.out.println(twoSum(nums2, 14));
 			 
 	}
 	
 	// 시간복잡도 -> O(n)
 	private static boolean twoSum(int[] nums, int target) {
-		Hashtable<Integer, Boolean> ht = new Hashtable<>();
+		HashSet<Integer> hs = new HashSet<>();
 		
 		//초기화
 		for(int n : nums) {
-			ht.put(n, true);
+			hs.add(n);
 		}
 		//찾기
 		for(int n : nums) {
 			int findKey = target-n;
 			
-			if(ht.containsKey(findKey) && n != findKey) {
+			if(hs.contains(findKey) && n != findKey) {
 				return true;
 			}
 		}
