@@ -39,7 +39,7 @@ public class Tree1 {
 	}
 }
 class Node {
-	int val;
+	Object val;
 	Node left;
 	Node right;
 	
