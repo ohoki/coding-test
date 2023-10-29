@@ -1,4 +1,4 @@
-package goormdevth.test;
+package practice.test;
 
 import java.util.LinkedList;
 import java.util.Queue;
