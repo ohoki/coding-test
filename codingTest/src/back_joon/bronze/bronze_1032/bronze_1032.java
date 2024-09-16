@@ -1,4 +1,4 @@
-package baek_joon.bronze.bronze_1032;
+package back_joon.bronze.bronze_1032;
 
 import java.io.BufferedReader;
 import java.io.IOException;
