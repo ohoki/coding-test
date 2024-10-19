@@ -1,6 +1,6 @@
 # [Bronze I] 도비의 난독증 테스트 (2204)
 
-[문제 링크](https://www.acmicpc.net/problem/2183)
+[문제 링크](https://www.acmicpc.net/problem/2204)
 
 ### 제출 일자
 2024.10.18
